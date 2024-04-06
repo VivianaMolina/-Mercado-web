@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <!--Font Awesome - Internet's icon library and toolkit-->
+    <script src="https://kit.fontawesome.com/155d30da54.js" crossorigin="anonymous"></script>
+
+    <title>Mercado Web</title>
+
+</head>
+
+<body>
+    {{> Menu }}
+    <div class="container">
+        {{> Mensaje }}
+        <div class="row mb-5 mt-5 gap-2 justify-content-center">
+            {{#each productos}}
+                {{> Producto }}
+            {{/each}}
+        </div>
+    </div>
+
+</body>
+
+</html>
