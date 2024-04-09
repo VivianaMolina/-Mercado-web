@@ -4,25 +4,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <!--Font Awesome - Internet's icon library and toolkit-->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ pageTitle }}</title>
+
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.css" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
     <script src="https://kit.fontawesome.com/155d30da54.js" crossorigin="anonymous"></script>
 
-    <title>Mercado Web</title>
+    <style>
+        #producto-style {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+        }
 
+        #imagen-con-boton {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 30px;
+            text-decoration: solid;
+        }
+
+        .action-button:hover {
+            color: white;
+            cursor: pointer;
+            background-color: blue;
+        }
+    </style>
 </head>
 
 <body>
-    {{> Menu }}
-    <div class="container">
-        {{> Mensaje }}
-        <div class="row mb-5 mt-5 gap-2 justify-content-center">
-            {{#each productos}}
-                {{> Producto }}
-            {{/each}}
-        </div>
-    </div>
+    {{> menu }}
+    <main>
+        <section class="container">
+            {{> mensaje }}
+        </section>
 
+        <section class="container">
+            <div class="row mb-5 mt-5 gap-2 justify-content-center">
+                {{> producto }}
+
+            </div>
+        </section>
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Productos Seleccionados</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="show-products">
+
+                        </div>
+          
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+<script src="/jquery/jquery.js"></script>
+
+<script type="text/javascript">
+var newItem = [];
+$(document).ready(function() {
+       
+  $('.action-button').on('click', function() {
+    // Get the associated item ID from the data attribute
+    const itemId = $(this).data('id');
+    const found = newItem.find((element) => element === itemId);
+
+    if (found === undefined){
+        var img = document.createElement('img');
+        img.src = "/" + itemId + ".png";
+        img.height = 100;
+        img.width = 100;
+        document.getElementById('show-products').appendChild(img);
+        
+        newItem.push(itemId);
+    } 
+    
+   $('#exampleModal').modal('show');
+
+});
+
+});
+
+</script>
+
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"> </script>
 </body>
 
 </html>

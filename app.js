@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
+
 app.listen(3000, () => {
     console.log("El servidor está inicializado en el puerto 3000");
 });
@@ -13,22 +14,15 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
+app.use("/bootstrap", express.static(__dirname + "/node_modules/bootstrap/dist"));
+app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'))
+app.use(express.static("img"));
 
-app.use("/jquery", express.static(__dirname + "/node_modules/jquery/dist"));
+app.get('/:producto', (req, res) => {
 
-app.get("/", function (req, res) {
-    res.render("Dashboard", {
-        layout: "Dashboard",
-        productos: [
-            "banana",
-            "cebollas",
-            "pimenton",
-            "papas",
-            "lechuga",
-            "tomate",
-        ],
-    });
+    const { producto } = req.params;
+    const productos = ['banana', 'cebollas', 'pimenton', 'papas', 'lechuga', 'tomate'];
+
+    res.render('Dashboard', { layout: "Dashboard", pageTitle: 'My Shop', Products: productos, producto: producto, });
+
 });
-
-app.use(express.static("img"))
