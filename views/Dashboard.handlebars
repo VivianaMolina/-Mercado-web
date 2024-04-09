@@ -60,7 +60,7 @@
                         <div id="show-products">
 
                         </div>
-          
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -71,34 +71,34 @@
 
     </main>
 
-<script src="/jquery/jquery.js"></script>
+    <script src="/jquery/jquery.js"></script>
 
-<script type="text/javascript">
-var newItem = [];
-$(document).ready(function() {
-       
-  $('.action-button').on('click', function() {
-    // Get the associated item ID from the data attribute
-    const itemId = $(this).data('id');
-    const found = newItem.find((element) => element === itemId);
+    <script type="text/javascript">
+        var newItem = [];
+        $(document).ready(function () {
 
-    if (found === undefined){
-        var img = document.createElement('img');
-        img.src = "/" + itemId + ".png";
-        img.height = 100;
-        img.width = 100;
-        document.getElementById('show-products').appendChild(img);
-        
-        newItem.push(itemId);
-    } 
-    
-   $('#exampleModal').modal('show');
+            $('.action-button').on('click', function () {
+                // Get the associated item ID from the data attribute
+                const itemId = $(this).data('id');
+                const found = newItem.find((element) => element === itemId);
 
-});
+                if (found === undefined) {
+                    var img = document.createElement('img');
+                    img.src = "/" + itemId + ".png";
+                    img.height = 100;
+                    img.width = 100;
+                    document.getElementById('show-products').appendChild(img);
 
-});
+                    newItem.push(itemId);
+                }
 
-</script>
+                $('#exampleModal').modal('show');
+
+            });
+
+        });
+
+    </script>
 
     <script src="/bootstrap/js/bootstrap.bundle.min.js"> </script>
 </body>
