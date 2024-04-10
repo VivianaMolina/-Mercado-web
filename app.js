@@ -21,7 +21,7 @@ app.use(express.static("img"));
 app.get('/', (req, res) => {
     const productos = ['banana', 'cebollas', 'pimenton', 'papas', 'lechuga', 'tomate'];
 
-    res.render('Dashboard', { layout: "Dashboard", pageTitle: 'My Shop', Products: productos });
+    res.render('Dashboard', { layout: "Dashboard", pageTitle: 'Mercado Web', Products: productos });
 
 });
 
