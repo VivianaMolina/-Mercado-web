@@ -18,11 +18,13 @@ app.use("/bootstrap", express.static(__dirname + "/node_modules/bootstrap/dist")
 app.use('/jquery', express.static(__dirname + '/node_modules/jquery/dist'))
 app.use(express.static("img"));
 
-app.get('/:producto', (req, res) => {
-
-    const { producto } = req.params;
+app.get('/', (req, res) => {
     const productos = ['banana', 'cebollas', 'pimenton', 'papas', 'lechuga', 'tomate'];
 
-    res.render('Dashboard', { layout: "Dashboard", pageTitle: 'My Shop', Products: productos, producto: producto, });
+    res.render('Dashboard', { layout: "Dashboard", pageTitle: 'My Shop', Products: productos });
 
+});
+
+app.get("*", (req, res) => {
+    res.send("<h1>404 - Página no encontrada</h1><p>Lo siento, la página que buscas no existe.</p>");
 });
